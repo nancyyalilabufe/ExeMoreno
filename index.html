@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exequiel Moreno — Diputado Provincial de Catamarca</title>
+  <meta name="description" content="Sitio institucional del diputado provincial Exequiel Moreno. Conocé sus proyectos legislativos, su agenda territorial y dejá tu consulta.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Archivo:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="site-header">
+    <a href="#inicio" class="logo">
+      <span class="logo-name">Exequiel Moreno</span>
+      <span class="logo-tag">Diputado Provincial · Catamarca</span>
+    </a>
+    <nav class="main-nav">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#agenda">Agenda</a>
+      <a href="#contacto" class="btn btn-accent">Contactar</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="inicio" class="hero">
+    <div class="hero-text">
+      <span class="eyebrow eyebrow-light">Honorable Cámara de Diputados de Catamarca</span>
+      <h1>Trabajando por Catamarca, proyecto a proyecto.</h1>
+      <p>Legislación pensada desde las necesidades reales de nuestros barrios, escuelas y departamentos. Conocé el trabajo, las visitas y las iniciativas en curso.</p>
+      <div class="hero-actions">
+        <a href="#proyectos" class="btn btn-accent">Ver proyectos</a>
+        <a href="#contacto" class="btn btn-outline">Dejar una consulta</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="images/moreno-hero.jpg" alt="Exequiel Moreno, Diputado Provincial de Catamarca">
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats-strip">
+    <div class="stat">
+      <span class="stat-num" id="statProyectos">0</span>
+      <span class="stat-label">proyectos legislativos elaborados</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">6</span>
+      <span class="stat-label">áreas de política pública</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">1</span>
+      <span class="stat-label">banca, muchas causas</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">[N]</span>
+      <span class="stat-label">departamentos visitados</span>
+    </div>
+  </section>
+
+  <!-- SOBRE MI -->
+  <section id="sobre-mi" class="about">
+    <div class="about-heading">
+      <span class="eyebrow">Sobre mí</span>
+      <h2>Cerca de la gente, cerca de las soluciones</h2>
+    </div>
+    <div class="about-body">
+      <p>[BIOGRAFÍA BREVE: trayectoria, departamento de origen, motivación para la función pública y principales logros legislativos hasta el momento.]</p>
+      <div class="chips">
+        <span class="chip">Educación</span>
+        <span class="chip">Salud y familias</span>
+        <span class="chip">Seguridad</span>
+        <span class="chip">Ambiente y tecnología</span>
+        <span class="chip">Producción</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section id="proyectos" class="projects">
+    <div class="section-intro">
+      <span class="eyebrow">Proyectos</span>
+      <h2>Iniciativas legislativas</h2>
+      <p>Filtrá por área para ver el trabajo en cada tema.</p>
+    </div>
+
+    <div class="filter-chips" id="filterChips"></div>
+    <p class="filter-count" id="filterCount"></p>
+
+    <div class="projects-grid" id="projectsGrid"></div>
+  </section>
+
+  <!-- AGENDA -->
+  <section id="agenda" class="agenda">
+    <div class="agenda-heading">
+      <span class="eyebrow">Agenda</span>
+      <h2>Recorridas y actividad territorial</h2>
+      <p>Visitas a departamentos, audiencias públicas y reuniones vecinales.</p>
+    </div>
+    <div class="agenda-list" id="agendaList"></div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="contact">
+    <div class="contact-info">
+      <span class="eyebrow eyebrow-light">Contacto</span>
+      <h2>¿Tenés una consulta o una propuesta?</h2>
+      <p>Escribinos y el equipo te va a responder a la brevedad.</p>
+      <ul class="contact-details">
+        <li>Oficina: [DIRECCIÓN — HONORABLE CÁMARA DE DIPUTADOS, CATAMARCA]</li>
+        <li>Teléfono: [A COMPLETAR]</li>
+        <li>Email: [A COMPLETAR]</li>
+        <li>Redes: [INSTAGRAM] · [FACEBOOK] · [X]</li>
+      </ul>
+    </div>
+
+    <div class="contact-form-card">
+      <!--
+        TODO (ver README.md, sección "Conectar el formulario"):
+        Reemplazar la URL de "action" y los atributos "name" de cada input
+        por los que te da tu Google Form una vez que lo crees.
+      -->
+      <form id="contactForm" class="contact-form"
+            action="https://docs.google.com/forms/u/0/d/e/TU_FORM_ID/formResponse"
+            method="POST" target="hidden_iframe">
+        <div class="field">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="entry.TU_ENTRY_ID_NOMBRE" placeholder="Tu nombre" required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="entry.TU_ENTRY_ID_EMAIL" placeholder="tu@email.com" required>
+        </div>
+        <div class="field">
+          <label for="mensaje">Tu consulta</label>
+          <textarea id="mensaje" name="entry.TU_ENTRY_ID_MENSAJE" rows="4" placeholder="Contanos en qué podemos ayudarte" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-accent btn-full">Enviar consulta</button>
+      </form>
+
+      <div id="successMessage" class="success-message" hidden>
+        <span class="success-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#FAF8F4" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </span>
+        <h3>¡Gracias!</h3>
+        <p>Recibimos tu consulta y el equipo te va a responder a la brevedad.</p>
+        <button type="button" id="resetForm" class="btn btn-outline-dark">Enviar otra consulta</button>
+      </div>
+
+      <!-- iframe oculto: evita que el envío del form navegue a Google -->
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <span class="footer-name">Exequiel Moreno</span>
+      <span class="footer-tag">Honorable Cámara de Diputados de la Provincia de Catamarca</span>
+    </div>
+    <nav class="footer-nav">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#agenda">Agenda</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
