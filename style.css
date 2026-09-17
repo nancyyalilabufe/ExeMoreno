@@ -1,9 +1,9 @@
 /* ---------- Tokens ---------- */
 :root {
-  --navy: #1B3A5C;
-  --navy-dark: #12263D;
-  --navy-mid: #274B70;
-  --accent: #C1622D;
+  --navy: #5E614E;
+  --navy-dark: #3F4133;
+  --navy-mid: #71765F;
+  --accent: #B08D3E;
   --ivory: #FAF8F4;
   --sand: #F1EBDD;
   --tan: #EFE7D8;
@@ -12,14 +12,14 @@
   --text-soft: #4B5563;
   --text-mute: #6B7280;
 
-  --cat-educacion: #1B3A5C;
+  --cat-educacion: #5E614E;
   --cat-seguridad: #8B3A3A;
   --cat-salud: #6B4C8A;
   --cat-animal: #5C7A4A;
   --cat-ambiente: #2D6E6E;
-  --cat-produccion: #B5762C;
+  --cat-produccion: #B08D3E;
 
-  --font-display: 'Fraunces', serif;
+  --font-display: 'Anton', sans-serif;
   --font-body: 'Archivo', sans-serif;
 }
 
@@ -83,9 +83,8 @@ input:focus, textarea:focus, button:focus-visible, a:focus-visible {
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--border);
 }
-.logo { display: flex; flex-direction: column; line-height: 1.1; }
-.logo-name { font-family: var(--font-display); font-weight: 600; font-size: 22px; color: var(--accent); }
-.logo-tag { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-mute); }
+.logo { display: flex; align-items: center; }
+.logo-img { height: 46px; width: auto; border-radius: 6px; }
 .main-nav { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
 .main-nav a:not(.btn) { font-size: 15px; font-weight: 500; color: var(--text); }
 .main-nav .btn { padding: 10px 22px; font-size: 14px; }
@@ -228,6 +227,36 @@ h2 {
   color: #8A8371;
   margin: 0 0 32px;
 }
+
+.search-wrap { display: flex; justify-content: center; margin: 0 0 16px; }
+.search-input {
+  width: 100%;
+  max-width: 420px;
+  padding: 12px 18px;
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  font-size: 14.5px;
+  color: var(--text);
+  background: var(--ivory);
+}
+.search-input:focus { border-color: var(--accent); }
+
+.project-cedop-link {
+  align-self: flex-start;
+  margin-top: -4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  border-bottom: 1.5px solid transparent;
+}
+.project-cedop-link:hover { border-bottom-color: var(--accent); opacity: 1; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 550ms ease, transform 550ms ease;
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
 
 .projects-grid {
   display: grid;
@@ -392,8 +421,8 @@ h2 {
   padding: 40px 64px;
   background: var(--navy-dark);
 }
-.footer-brand { display: flex; flex-direction: column; gap: 4px; }
-.footer-name { font-family: var(--font-display); font-weight: 600; font-size: 17px; color: var(--ivory); }
+.footer-brand { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.footer-logo { height: 34px; width: auto; border-radius: 4px; }
 .footer-tag { font-size: 13px; color: #8CA0B3; }
 .footer-nav { display: flex; gap: 28px; flex-wrap: wrap; }
 .footer-nav a { font-size: 14px; color: #C7D3DE; }
