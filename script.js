@@ -165,6 +165,63 @@ const DEPARTAMENTOS = [
   'Santa María', 'Santa Rosa', 'Tinogasta', 'Valle Viejo'
 ];
 
+
+// ---------------------------------------------------------------
+// 5) NOTICIAS (los "Leer más" llevan a la nota en exequielmoreno.com.ar)
+//    imagen: opcional. Si la dejás vacía, se muestra una tarjeta con color.
+// ---------------------------------------------------------------
+const NOTICIAS = [
+  {
+    titulo: 'Moreno presentó un proyecto de alivio fiscal para comerciantes, pymes y nuevos emprendimientos en Catamarca',
+    resumen: 'Propone bajar las retenciones y percepciones excesivas de Ingresos Brutos y hacer más fácil recuperar los saldos a favor.',
+    etiqueta: 'Proyecto',
+    imagen: 'https://exequielmoreno.com.ar/wp-content/uploads/2026/11/instagram-Df0ngTyjMm5-823x1024.jpg',
+    enlace: 'https://exequielmoreno.com.ar/moreno-presento-un-proyecto-de-alivio-fiscal-para-comerciantes-pymes-y-nuevos-emprendimientos-en-catamarca/'
+  },
+  {
+    titulo: 'Exequiel Moreno recorrió Antofagasta de la Sierra y fortaleció su vínculo con las comunidades del interior',
+    resumen: 'Visita a localidades de la Puna catamarqueña, con encuentros con vecinos, productores y cooperativistas.',
+    etiqueta: 'Recorrida',
+    imagen: 'https://exequielmoreno.com.ar/wp-content/uploads/2026/11/instagram-Df25J9ItkUG-576x1024.jpg',
+    enlace: 'https://exequielmoreno.com.ar/exequiel-moreno-recorrio-antofagasta-de-la-sierra-y-fortalecio-su-vinculo-con-las-comunidades-del-interior/'
+  },
+  {
+    titulo: 'Diputados dio media sanción al proyecto de Exequiel Moreno para fortalecer las cooperativas catamarqueñas',
+    resumen: 'El Estado provincial va a priorizar la compra de bienes y servicios a cooperativas radicadas en Catamarca.',
+    etiqueta: 'Media sanción',
+    imagen: '',
+    enlace: 'https://exequielmoreno.com.ar/diputados-dio-media-sancion-al-proyecto-de-exequiel-moreno-para-fortalecer-las-cooperativas-catamarquenas/'
+  }
+];
+
+// ---------------------------------------------------------------
+// 6) INSTAGRAM y TIKTOK — publicación nueva: copiá un bloque y cambiá
+//    el enlace, la imagen y el texto.
+// ---------------------------------------------------------------
+const INSTAGRAM = [
+  { enlace: 'https://www.instagram.com/p/Df5rb8ujK8g/',
+    imagen: 'https://exequielmoreno.com.ar/wp-content/uploads/2026/11/instagram-Df5rb8ujK8g-1024x683.jpg',
+    texto: 'Sesión con agenda de derechos y salud pública: media sanción al régimen de licencias parentales y a la adhesión a la Ley Nicolás.' },
+  { enlace: 'https://www.instagram.com/p/Df25J9ItkUG/',
+    imagen: 'https://exequielmoreno.com.ar/wp-content/uploads/2026/11/instagram-Df25J9ItkUG-576x1024.jpg',
+    texto: 'Despedida de Antofagasta de la Sierra y el compromiso con las comunidades de la Puna.' },
+  { enlace: 'https://www.instagram.com/p/Df0ngTyjMm5/',
+    imagen: 'https://exequielmoreno.com.ar/wp-content/uploads/2026/11/instagram-Df0ngTyjMm5-823x1024.jpg',
+    texto: 'Proyecto para aliviar la carga de Ingresos Brutos en emprendimientos, pymes y comercios.' }
+];
+
+const TIKTOK = [
+  { enlace: 'https://www.tiktok.com/@exequiel.moreno/video/7709255448355966228',
+    imagen: 'https://exequielmoreno.com.ar/wp-content/uploads/2026/08/tiktok-7709255448355966228-576x1024.jpg',
+    texto: 'Despedida de Antofagasta de la Sierra.' },
+  { enlace: 'https://www.tiktok.com/@exequiel.moreno/video/7706891822806650133',
+    imagen: 'https://exequielmoreno.com.ar/wp-content/uploads/2026/08/tiktok-7706891822806650133-576x1024.jpg',
+    texto: 'La historia de Gervasio Reales y Bartolina Alancay en Vega Las Cuevas, cerca del Salar de Antofalla.' },
+  { enlace: 'https://www.tiktok.com/@exequiel.moreno/video/7706697438618275092',
+    imagen: 'https://exequielmoreno.com.ar/wp-content/uploads/2026/08/tiktok-7706697438618275092-576x1024.jpg',
+    texto: 'Visita a Antofalla para escuchar a vecinos y productores.' }
+];
+
 // ===============================================================
 //  A PARTIR DE ACÁ ES EL FUNCIONAMIENTO — no hace falta tocarlo.
 // ===============================================================
@@ -380,6 +437,57 @@ function renderRecorridas() {
   observeReveal();
 }
 
+
+function renderNoticias() {
+  const grid = document.getElementById('noticiasGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  NOTICIAS.forEach((n) => {
+    const card = document.createElement('article');
+    card.className = 'noticia-card reveal';
+    card.innerHTML = `
+      ${n.imagen
+        ? `<img src="${escapeHtml(n.imagen)}" alt="" class="noticia-img" loading="lazy" onerror="this.outerHTML='<div class=&quot;noticia-img noticia-img-vacia&quot;></div>'">`
+        : '<div class="noticia-img noticia-img-vacia"></div>'}
+      <div class="noticia-body">
+        <span class="recorrida-fecha">${escapeHtml(n.etiqueta || '')}</span>
+        <h3>${escapeHtml(n.titulo)}</h3>
+        <p>${escapeHtml(n.resumen)}</p>
+        <a href="${escapeHtml(n.enlace)}" target="_blank" rel="noopener" class="project-cedop-link">Leer más ↗</a>
+      </div>`;
+    grid.appendChild(card);
+  });
+  observeReveal();
+}
+
+function renderSocial(lista, gridId, red) {
+  const grid = document.getElementById(gridId);
+  if (!grid) return;
+  grid.innerHTML = '';
+  lista.forEach((post) => {
+    const a = document.createElement('a');
+    a.className = 'social-card reveal';
+    a.href = post.enlace;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.innerHTML = `
+      <div class="social-thumb">
+        <img src="${escapeHtml(post.imagen)}" alt="Publicación de ${red} de Exequiel Moreno" loading="lazy" onerror="this.style.display='none'">
+        ${red === 'TikTok' ? '<span class="play-icon" aria-hidden="true">▶</span>' : ''}
+      </div>
+      <p>${escapeHtml(post.texto)}</p>
+      <span class="project-cedop-link">Ver en ${red} ↗</span>`;
+    grid.appendChild(a);
+  });
+  observeReveal();
+}
+
+function initHeroVideo() {
+  const v = document.querySelector('.hero-bg');
+  if (!v) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) v.pause();
+}
+
 // Animación de aparición al hacer scroll
 let revealObserver = null;
 function observeReveal() {
@@ -426,6 +534,10 @@ function initContactForm() {
 
 document.addEventListener('DOMContentLoaded', () => {
   renderStats();
+  initHeroVideo();
+  renderNoticias();
+  renderSocial(INSTAGRAM, 'instagramGrid', 'Instagram');
+  renderSocial(TIKTOK, 'tiktokGrid', 'TikTok');
   renderAboutChips();
   renderFeatured();
   renderChips();

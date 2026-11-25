@@ -17,15 +17,20 @@
       <img src="logo.png" alt="Exequiel Moreno, Diputado Provincial" class="logo-img">
     </a>
     <nav class="main-nav">
-      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#noticias">Noticias</a>
       <a href="#proyectos">Proyectos</a>
       <a href="#recorridas">Recorridas</a>
+      <a href="#redes">Redes</a>
       <a href="#contacto" class="btn btn-accent">Contactar</a>
     </nav>
   </header>
 
-  <!-- HERO -->
-  <section id="inicio" class="hero">
+  <!-- HERO (video de fondo, el mismo del sitio oficial) -->
+  <section id="inicio" class="hero hero-video">
+    <video class="hero-bg" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+      <source src="https://exequielmoreno.com.ar/wp-content/themes/exequiel-moreno-theme/assets/img/exequielhero-av1.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
     <div class="hero-text">
       <span class="eyebrow eyebrow-light">Diputado provincial · Catamarca</span>
       <p class="hero-name">Exequiel Moreno</p>
@@ -40,19 +45,29 @@
         <li>Honorable Cámara de Diputados de Catamarca</li>
       </ul>
     </div>
-    <div class="hero-photo">
-      <img src="moreno-hero.jpg" alt="Exequiel Moreno, Diputado Provincial de Catamarca">
-    </div>
   </section>
 
   <!-- DATOS DE IMPACTO (se completan desde script.js) -->
   <section class="stats-strip" id="statsStrip" aria-label="Datos de la gestión"></section>
+
+  <!-- NOTICIAS -->
+  <section id="noticias" class="noticias">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Noticias</span>
+        <h2>Lo último</h2>
+      </div>
+      <a href="https://exequielmoreno.com.ar/diputados/" target="_blank" rel="noopener" class="btn btn-outline-dark">Ver todas ↗</a>
+    </div>
+    <div class="noticias-grid" id="noticiasGrid"></div>
+  </section>
 
   <!-- SOBRE MI -->
   <section id="sobre-mi" class="about">
     <div class="about-heading">
       <span class="eyebrow">Sobre mí</span>
       <h2>Cerca de la gente, cerca de las soluciones</h2>
+      <img src="moreno-hero.jpg" alt="Exequiel Moreno, Diputado Provincial de Catamarca" class="about-photo">
     </div>
     <div class="about-body">
       <p>[BIOGRAFÍA BREVE: trayectoria, departamento de origen, motivación para la función pública y principales logros legislativos hasta el momento.]</p>
@@ -123,6 +138,27 @@
     </div>
   </section>
 
+  <!-- REDES: INSTAGRAM Y TIKTOK -->
+  <section id="redes" class="redes">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">En Instagram</span>
+        <h2>Lo que va pasando</h2>
+      </div>
+      <a href="https://www.instagram.com/exequiel.moreno/" target="_blank" rel="noopener" class="btn btn-outline-dark">Seguilo en Instagram ↗</a>
+    </div>
+    <div class="social-grid" id="instagramGrid"></div>
+
+    <div class="section-head section-head-gap">
+      <div>
+        <span class="eyebrow">En TikTok</span>
+        <h2>Videos</h2>
+      </div>
+      <a href="https://www.tiktok.com/@exequiel.moreno" target="_blank" rel="noopener" class="btn btn-outline-dark">Ver perfil ↗</a>
+    </div>
+    <div class="social-grid social-grid-video" id="tiktokGrid"></div>
+  </section>
+
   <!-- CONTACTO -->
   <section id="contacto" class="contact">
     <div class="contact-info">
@@ -183,9 +219,11 @@
       <span class="footer-tag">Honorable Cámara de Diputados de la Provincia de Catamarca</span>
     </div>
     <nav class="footer-nav">
+      <a href="#noticias">Noticias</a>
       <a href="#sobre-mi">Sobre mí</a>
       <a href="#proyectos">Proyectos</a>
       <a href="#recorridas">Recorridas</a>
+      <a href="#redes">Redes</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </footer>
