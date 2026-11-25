@@ -426,3 +426,188 @@ h2 {
 .footer-tag { font-size: 13px; color: #8CA0B3; }
 .footer-nav { display: flex; gap: 28px; flex-wrap: wrap; }
 .footer-nav a { font-size: 14px; color: #C7D3DE; }
+
+/* ===============================================================
+   NUEVO — portada, proyectos destacados, recorridas, contacto
+   =============================================================== */
+[hidden] { display: none !important; }
+
+/* Portada */
+.hero-name {
+  margin: -10px 0 -14px !important;
+  font-family: var(--font-display);
+  font-size: 22px !important;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent) !important;
+}
+.hero-facts { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.hero-facts li {
+  padding: 7px 14px;
+  border: 1px solid rgba(250, 248, 244, 0.25);
+  border-radius: 999px;
+  font-size: 13px;
+  color: #E4E2D6;
+}
+
+/* Datos de impacto */
+.stat:last-child { border-right: none; }
+
+/* Proyectos destacados */
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-bottom: 72px;
+}
+.featured-card {
+  background: var(--ivory);
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--accent);
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.featured-card h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.25;
+  color: var(--navy);
+}
+.featured-card p { margin: 0; font-size: 15px; line-height: 1.6; color: var(--text-soft); flex-grow: 1; }
+
+/* Línea de avance del trámite */
+.stepper {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  position: relative;
+}
+.stepper li { position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+.stepper li::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: -50%;
+  width: 100%;
+  height: 2px;
+  background: var(--border);
+  z-index: 0;
+}
+.stepper li:first-child::before { display: none; }
+.stepper li.done::before, .stepper li.current::before { background: var(--accent); }
+.step-dot {
+  width: 14px; height: 14px;
+  border-radius: 999px;
+  background: var(--ivory);
+  border: 2px solid var(--border);
+  position: relative; z-index: 1;
+}
+.stepper li.done .step-dot { background: var(--accent); border-color: var(--accent); }
+.stepper li.current .step-dot { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 4px rgba(176, 141, 62, 0.22); }
+.step-label { font-size: 11.5px; line-height: 1.25; color: var(--text-mute); }
+.stepper li.current .step-label { color: var(--navy); font-weight: 700; }
+
+.section-intro-sub { margin-bottom: 28px; }
+.sub-title { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: 26px; color: var(--navy); }
+.cedop-cta { display: flex; justify-content: center; margin-top: 40px; }
+
+/* Tarjetas del listado completo */
+.extracto summary { cursor: pointer; font-size: 13px; font-weight: 600; color: var(--text-mute); }
+.extracto p { margin: 10px 0 0; font-size: 12.5px; line-height: 1.55; color: var(--text-mute); }
+.project-status { justify-content: space-between; }
+.project-status .project-cedop-link { margin: 0; }
+.status-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  background: var(--tan);
+  color: var(--navy) !important;
+}
+.status-1 { background: #E6EBD9; color: #4B5A2E !important; }
+.status-2 { background: #F3E6C7; color: #7A5B12 !important; }
+.status-3 { background: var(--navy); color: var(--ivory) !important; }
+.empty-state { grid-column: 1 / -1; text-align: center; color: var(--text-mute); }
+
+/* Recorridas */
+.recorridas { padding: 88px 64px; }
+.deptos-wrap { max-width: 900px; margin: 0 auto 48px; text-align: center; }
+.deptos-title { margin: 0 0 18px; font-size: 15px; font-weight: 600; color: var(--navy); }
+.deptos-title span { font-family: var(--font-display); font-size: 26px; color: var(--accent); }
+.deptos-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.depto {
+  padding: 12px 8px;
+  border-radius: 10px;
+  border: 1px dashed #D8D0C0;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #9A927F;
+}
+.depto.visited { background: var(--navy); border: 1px solid var(--navy); color: var(--ivory); }
+.deptos-legend { display: flex; justify-content: center; gap: 22px; margin-top: 14px; font-size: 12.5px; color: var(--text-mute); }
+.legend-dot { display: inline-block; width: 10px; height: 10px; border-radius: 3px; border: 1px dashed #B9B09C; vertical-align: -1px; margin-right: 4px; }
+.legend-dot.visited { background: var(--navy); border: 1px solid var(--navy); }
+
+.recorridas-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.recorrida-card { width: 340px; max-width: 100%; background: var(--sand); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+.recorrida-foto { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+.recorrida-foto-vacia {
+  display: flex; align-items: flex-end; padding: 18px;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+}
+.recorrida-foto-vacia span { font-family: var(--font-display); font-size: 24px; color: var(--ivory); }
+.recorrida-body { padding: 22px 24px 26px; display: flex; flex-direction: column; gap: 10px; }
+.recorrida-fecha { font-size: 12.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent); }
+.recorrida-body h3 { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: 20px; color: var(--navy); }
+.recorrida-body p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--text-soft); }
+.recorridas-cta { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 48px; }
+.recorridas-cta p { margin: 0; font-size: 17px; font-weight: 600; color: var(--navy); }
+
+/* Contacto */
+.contact-details strong { color: var(--ivory); font-weight: 600; }
+.contact-details a { border-bottom: 1px solid rgba(199, 211, 222, 0.5); }
+.social-links { display: flex; flex-wrap: wrap; gap: 10px; }
+.social-links a {
+  padding: 8px 16px;
+  border: 1px solid rgba(250, 248, 244, 0.3);
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ivory);
+}
+
+/* Celular */
+@media (max-width: 900px) {
+  .featured-grid { grid-template-columns: 1fr; }
+  .deptos-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .site-header { padding: 14px 20px; }
+  .main-nav { gap: 16px; }
+  .hero, .about, .projects, .recorridas, .contact { padding-left: 20px; padding-right: 20px; }
+  .hero { padding-top: 48px; gap: 32px; }
+  .hero, .about, .contact { flex-direction: column; align-items: stretch; }
+  .hero-text, .hero-photo, .about-heading, .about-body, .contact-info { min-width: 0; width: 100%; }
+  .hero-photo { padding-bottom: 48px; }
+  .hero-text h1 { font-size: 38px; }
+  .stats-strip { padding: 0 20px; }
+  .stat { min-width: 45%; border-right: none; border-bottom: 1px solid var(--navy-mid); }
+  .comisiones { padding: 0 20px 64px; }
+  .site-footer { padding: 32px 20px; }
+  .contact-form-card { padding: 24px; min-width: 0; }
+  .about-body, .agenda-list { min-width: 0; }
+}

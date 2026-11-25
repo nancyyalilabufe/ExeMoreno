@@ -1,52 +1,136 @@
-// ---------------------------------------------------------------
-// Datos reales de proyectos legislativos.
-// Editá/agregá objetos acá para actualizar la sección "Proyectos".
-// ---------------------------------------------------------------
-// ---------------------------------------------------------------
-// Datos reales de proyectos legislativos, tal como figuran en la
-// Nómina de Proyectos de CEDOP (cedop.gob.ar/buscar/Diputado/209).
-// Editá/agregá objetos acá para actualizar la sección "Proyectos".
-// El listado completo y actualizado siempre está en CEDOP — este
-// enlace se muestra en la sección.
-// ---------------------------------------------------------------
-const CEDOP_URL = 'https://cedop.gob.ar/buscar/Diputado/209';
+// ===============================================================
+//  SITIO EXEQUIEL MORENO — DATOS EDITABLES
+//  Todo lo que se ve en la página sale de las listas de este
+//  bloque. Para actualizar el sitio, editá solo esta parte.
+// ===============================================================
 
-const CATEGORY_COLORS = {
-  'Ley Provincial': 'var(--cat-educacion)',
-  'Declaración': 'var(--cat-produccion)',
-  'Resolución': 'var(--cat-salud)'
-};
-
-const PROYECTOS = [
-  { id: 9621, numero: 547, gde: 'EX-2026-00054632- -HCDCAT-DPEM', tipo: 'Ley Provincial', extracto: 'RÉGIMEN PROVINCIAL DE INTEGRIDAD, TRAZABILIDAD Y AUDITORÍA DE LA EMISIÓN DE TÍTULOS Y CERTIFICACIONES EDUCATIVAS.' },
-  { id: 9613, numero: 537, gde: 'EX-2026-00054288- -HCDCAT-DPEM', tipo: 'Ley Provincial', extracto: 'CRÉASE EL PROGRAMA PROVINCIAL DE ALIVIO AL SOBREENDEUDAMIENTO ("EL PROGRAMA"), DESTINADO A REFINANCIAR DEUDAS DE AGENTES PÚBLICOS PROVINCIALES Y MUNICIPALES, Y DE FAMILIAS CATAMARQUEÑAS EN SITUACIÓN DE SOBREENDEUDAMIENTO.' },
-  { id: 9612, numero: 536, gde: 'EX-2026-00054148- -HCDCAT-DPEM', tipo: 'Ley Provincial', extracto: 'GARANTIZAR EL SUMINISTRO ELÉCTRICO DE EMERGENCIA A LAS LOCALIDADES DE LA PROVINCIA EN CUYO ÁMBITO SE EMPLACEN PARQUES DE GENERACIÓN DE ENERGÍA SOLAR FOTOVOLTAICA.' },
-  { id: 9589, numero: 513, gde: 'EX-2026-00052760- -HCDCAT-DPEM', tipo: 'Ley Provincial', extracto: 'CREASE EN EL CICLO ORIENTADO DEL NIVEL DE EDUCACIÓN SECUNDARIA DE LA PROVINCIA DE CATAMARCA, LA ORIENTACIÓN EN MINERÍA Y RECURSOS NATURALES.' },
-  { id: 9530, numero: 454, gde: 'EX-2026-00049956- -HCDCAT-DPEM', tipo: 'Ley Provincial', extracto: 'ESTABLÉCESE EL RÉGIMEN PROVINCIAL COMPLEMENTARIO PARA EL REGISTRO, HABILITACIÓN, PRUEBA Y CIRCULACIÓN DENTRO DEL TERRITORIO PROVINCIAL DE VEHÍCULOS AUTÓNOMOS.' },
-  { id: 9507, numero: 430, gde: 'EX-2026-00048789- -HCDCAT-DPEM', tipo: 'Ley Provincial', extracto: 'DECLÁRASE EL ESTADO DE EMERGENCIA PROVINCIAL EN MATERIA DE DEDUCCIÓN DE HABERES, EN RAZÓN DE LA CRISIS ECONÓMICA QUE ATRAVIESA EL PAÍS Y DEL SOBREENDEUDAMIENTO QUE AFECTA A UN NÚMERO SIGNIFICATIVO DE AGENTES PÚBLICOS DE LA PROVINCIA DE CATAMARCA.' },
-  { id: 9462, numero: 386, gde: 'EX-2026-00045518- -HCDCAT-DPEM', tipo: 'Ley Provincial', extracto: 'MODIFICACIÓN DE LA LEY N° 5.356 – NORMAS DE USO Y TRATAMIENTO DE LOS SÍMBOLOS PATRIOS.' },
-  { id: 9461, numero: 385, gde: 'EX-2026-00045444- -HCDCAT-DPEM', tipo: 'Ley Provincial', extracto: 'CRÉASE EL PROGRAMA PROVINCIAL DE FORMACIÓN DOCENTE EN EDUCACIÓN INCLUSIVA Y ATENCIÓN A LA DIVERSIDAD.' },
-  { id: 9460, numero: 384, gde: 'EX-2026-00045283- -HCDCAT-DPEM', tipo: 'Ley Provincial', extracto: 'CRÉASE EL SISTEMA PROVINCIAL DE REGISTRO DIGITAL PARA LA SEGURIDAD EN SENDERISMO, TREKKING Y MONTAÑISMO, DENOMINADO "CUMBRE SEGURA CATAMARCA".' },
-  { id: 9459, numero: 383, gde: 'EX-2026-00045243- -HCDCAT-DPEM', tipo: 'Declaración', extracto: 'DECLÁRASE DE INTERÉS PARLAMENTARIO, CULTURAL Y ARTÍSTICO LA TRAYECTORIA DEL ESTUDIO SUPERIOR DE DANZAS ESPAÑOLAS DE LA CIUDAD CAPITAL DE LA PROVINCIA DE CATAMARCA.' },
-  { id: 9457, numero: 381, gde: 'EX-2026-00045219- -HCDCAT-DPEM', tipo: 'Ley Provincial', extracto: 'CRÉASE EL PROTOCOLO PROVINCIAL DE CONTINUIDAD PEDAGÓGICA ANTE JORNADAS DE FRÍO EXTREMO.' },
-  { id: 9417, numero: 343, gde: 'EX-2026-00040836- -HCDCAT-DPEM', tipo: 'Declaración', extracto: 'DECLÁRASE DE INTERÉS PARLAMENTARIO LA REALIZACIÓN DEL EVENTO "CARROZAS DE LA INDEPENDENCIA", ORGANIZADO POR DOCENTES DEL NIVEL PRIMARIO DEL COLEGIO PRIVADO PADRE RAMÓN DE LA QUINTANA.' },
-  { id: 9413, numero: 338, gde: 'EX-2026-00040069- -HCDCAT-DPEM', tipo: 'Ley Provincial', extracto: 'ESTABLÉZCASE EL RÉGIMEN DE PROMOCIÓN DEL "COMPRE COOPERATIVO CATAMARQUEÑO".' },
-  { id: 9340, numero: 266, gde: 'EX-2026-00035579- -HCDCAT-DPEM', tipo: 'Ley Provincial', extracto: 'CRÉASE EL REGISTRO PÚBLICO PROVINCIAL DE PERSONAS CONDENADAS POR DELITOS CONTRA LA INTEGRIDAD SEXUAL, EN EL ÁMBITO DEL PODER JUDICIAL DE LA PROVINCIA DE CATAMARCA, BAJO LA DEPENDENCIA DE LA CORTE DE JUSTICIA PROVINCIAL.' },
-  { id: 9310, numero: 236, gde: 'EX-2026-00034355- -HCDCAT-DPEM', tipo: 'Declaración', extracto: 'DECLÁRASE DE INTERÉS LEGISLATIVO LA ACTUACIÓN DEL EQUIPO DE FÚTBOL FEMENINO BUSCAPINAS F.C., DEL COLEGIO DE ABOGADOS Y ABOGADAS DE LA PROVINCIA DE CATAMARCA.' },
-  { id: 9263, numero: 189, gde: 'EX-2026-00030742- -HCDCAT-DPEM', tipo: 'Declaración', extracto: 'DECLÁRASE DE INTERÉS PARLAMENTARIO, LA REALIZACIÓN DEL "5° EDICIÓN DE CULTURA COOPERATIVA 2026".' },
-  { id: 9262, numero: 188, gde: 'EX-2026-00030729- -HCDCAT-DPEM', tipo: 'Declaración', extracto: 'DECLÁRASE DE INTERÉS LEGISLATIVO, POR LA TRAYECTORIA INSTITUCIONAL DEL CENTRO VECINAL "PTE. RAMÓN S. CASTILLO" DEL BARRIO PILOTO DE LA CIUDAD CAPITAL.' },
-  { id: 9261, numero: 187, gde: 'EX-2026-00030712- -HCDCAT-DPEM', tipo: 'Ley Provincial', extracto: 'ESTABLÉCESE LA DIGITALIZACIÓN DEL PROCESO DE INSCRIPCIÓN Y REINSCRIPCIÓN DE DOCENTES ANTE LAS JUNTAS DE CLASIFICACIÓN DEPENDIENTES DEL MINISTERIO DE EDUCACIÓN.' },
-  { id: 9255, numero: 181, gde: 'EX-2026-00029744- -HCDCAT-DPEM', tipo: 'Declaración', extracto: 'DECLÁRASE DE INTERÉS PARLAMENTARIO LA TRAYECTORIA Y EL RECIENTE LOGRO INTERNACIONAL DE LA BANDA CATAMARQUEÑA "LOS HIJOS DE HARRI".' },
-  { id: 9240, numero: 166, gde: 'EX-2026-00028678- -HCDCAT-DPEM', tipo: 'Ley Provincial', extracto: 'CRÉASE EL PROCEDIMIENTO PROVINCIAL DE ACTUACIÓN ANTE LA SOSPECHA FUNDADA O DETECCIÓN DE ARMAS, EXPLOSIVOS, ARTEFACTOS SIMULADOS U OBJETOS POTENCIALMENTE PELIGROSOS EN EL ÁMBITO EDUCATIVO.' },
-  { id: 9236, numero: 163, gde: 'EX-2026-00028561- -HCDCAT-DPEM', tipo: 'Ley Provincial', extracto: 'CRÉASE EL REGISTRO PROVINCIAL DE APOYO ESCOLAR Y TUTORÍAS (REPAT), EN EL ÁMBITO DEL MINISTERIO DE EDUCACIÓN DE LA PROVINCIA DE CATAMARCA, COMO SISTEMA PÚBLICO DE VALIDACIÓN, ORGANIZACIÓN Y VINCULACIÓN DE SERVICIOS EDUCATIVOS COMPLEMENTARIOS.' },
-  { id: 9216, numero: 142, gde: 'EX-2026-00026957- -HCDCAT-DPEM', tipo: 'Declaración', extracto: 'DECLÁRASE DE INTERÉS PARLAMENTARIO AL PROYECTO "FORTALEZA HECHA FALDA", INICIATIVA FORMATIVA, CREADA Y COORDINADA POR LA PROFESORA ROMINA SALVATIERRA.' },
-  { id: 9215, numero: 141, gde: 'EX-2026-00026947- -HCDCAT-DPEM', tipo: 'Ley Provincial', extracto: 'ESTABLÉCESE LA COBERTURA INTEGRAL DE INFUSORES SUBCUTÁNEOS CONTINUOS DE INSULINA Y DE SISTEMAS DE MONITOREO CONTINUO DE GLUCOSA EN SANGRE, NO INVASIVOS E INDOLOROS, Y DE LOS MEDICAMENTOS E INSUMOS DE ÚLTIMA TECNOLOGÍA PARA PACIENTES NIÑOS, NIÑAS Y ADOLESCENTES HASTA LOS DIECIOCHO (18) AÑOS DE EDAD INCLUSIVE CON PATOLOGÍA DIAGNOSTICADA DE DIABETES MELLITUS TIPO 1 (DM1) Y TIPO 2 (DM2).' },
-  { id: 9214, numero: 140, gde: 'EX-2026-00026914- -HCDCAT-DPEM', tipo: 'Ley Provincial', extracto: 'CREASE UN DISTINTIVO VEHICULAR DE USO VOLUNTARIO PARA CONDUCTORES DE SETENTA AÑOS O MÁS.' },
-  { id: 9213, numero: 139, gde: 'EX-2026-00026894- -HCDCAT-DPEM', tipo: 'Declaración', extracto: 'DECLÁRASE DE INTERÉS PARLAMENTARIO A LA "COMPAÑÍA DE DANZAS FEMENINA EULALIAS", INICIATIVA ARTÍSTICA Y CULTURAL CREADA Y COORDINADA POR LAS PROFESORAS VERÓNICA ANAHÍ CATIVA Y ANDREA MELINA CORBALÁN.' }
+// ---------------------------------------------------------------
+// 1) DATOS DE IMPACTO (franja de números debajo de la portada)
+//    - Los que dicen "auto" se calculan solos con las listas de abajo.
+//    - Los que tienen valor: null NO se muestran. Cuando tengas el
+//      número, reemplazá null por el número (ej: valor: 12).
+// ---------------------------------------------------------------
+const DATOS_IMPACTO = [
+  { etiqueta: 'proyectos de ley presentados', valor: 'auto-leyes' },
+  { etiqueta: 'declaraciones de interés', valor: 'auto-declaraciones' },
+  { etiqueta: 'departamentos recorridos', valor: 'auto-departamentos' },
+  { etiqueta: 'leyes sancionadas', valor: null },
+  { etiqueta: 'vecinos y vecinas atendidos', valor: null },
+  { etiqueta: 'instituciones visitadas', valor: null }
 ];
 
 // ---------------------------------------------------------------
-// Comisiones que integra (fuente: CEDOP / diputadoscatamarca.gob.ar).
+// 2) PROYECTOS
+//    Fuente: Nómina de Proyectos de CEDOP (cedop.gob.ar/buscar/Diputado/209).
+//    Campos:
+//      titulo  → nombre corto y claro (el que lee la gente)
+//      tema    → se usa para los filtros
+//      estado  → 'Presentado' | 'Despacho de comisión' | 'Media sanción' | 'Ley'
+//      destacado + resumen → aparece arriba, con la línea de avance
+//    Revisá los estados: los que no se conocían quedaron en 'Presentado'.
+// ---------------------------------------------------------------
+const CEDOP_URL = 'https://cedop.gob.ar/buscar/Diputado/209';
+
+const ETAPAS = ['Presentado', 'Despacho de comisión', 'Media sanción', 'Ley'];
+
+const PROYECTOS = [
+  { id: 9413, numero: 338, tipo: 'Ley Provincial', tema: 'Economía y trabajo', estado: 'Media sanción',
+    titulo: 'Compre Cooperativo Catamarqueño',
+    destacado: true,
+    resumen: 'Da prioridad a las cooperativas catamarqueñas cuando el Estado provincial compra bienes y servicios, para que la plata pública quede trabajando en la provincia.',
+    extracto: 'ESTABLÉZCASE EL RÉGIMEN DE PROMOCIÓN DEL "COMPRE COOPERATIVO CATAMARQUEÑO".' },
+
+  { id: 9261, numero: 187, tipo: 'Ley Provincial', tema: 'Educación', estado: 'Despacho de comisión',
+    titulo: 'Legajo Digital Docente',
+    destacado: true,
+    resumen: 'Que docentes de toda la provincia puedan inscribirse y reinscribirse ante las Juntas de Clasificación de forma digital, sin viajar ni hacer filas.',
+    extracto: 'ESTABLÉCESE LA DIGITALIZACIÓN DEL PROCESO DE INSCRIPCIÓN Y REINSCRIPCIÓN DE DOCENTES ANTE LAS JUNTAS DE CLASIFICACIÓN DEPENDIENTES DEL MINISTERIO DE EDUCACIÓN.' },
+
+  { id: 9340, numero: 266, tipo: 'Ley Provincial', tema: 'Seguridad', estado: 'Despacho de comisión',
+    titulo: 'Registro público de condenados por delitos sexuales',
+    destacado: true,
+    resumen: 'Crea un registro público, dentro del Poder Judicial, de personas condenadas por delitos contra la integridad sexual, para proteger a las familias.',
+    extracto: 'CRÉASE EL REGISTRO PÚBLICO PROVINCIAL DE PERSONAS CONDENADAS POR DELITOS CONTRA LA INTEGRIDAD SEXUAL, EN EL ÁMBITO DEL PODER JUDICIAL DE LA PROVINCIA DE CATAMARCA, BAJO LA DEPENDENCIA DE LA CORTE DE JUSTICIA PROVINCIAL.' },
+
+  { id: 9507, numero: 430, tipo: 'Ley Provincial', tema: 'Economía y trabajo', estado: 'Presentado',
+    titulo: 'Emergencia por los descuentos sobre los sueldos estatales',
+    destacado: true,
+    resumen: 'Declara la emergencia frente al sobreendeudamiento de agentes públicos por los descuentos directos sobre sus haberes.',
+    extracto: 'DECLÁRASE EL ESTADO DE EMERGENCIA PROVINCIAL EN MATERIA DE DEDUCCIÓN DE HABERES, EN RAZÓN DE LA CRISIS ECONÓMICA QUE ATRAVIESA EL PAÍS Y DEL SOBREENDEUDAMIENTO QUE AFECTA A UN NÚMERO SIGNIFICATIVO DE AGENTES PÚBLICOS DE LA PROVINCIA DE CATAMARCA.' },
+
+  { id: 9215, numero: 141, tipo: 'Ley Provincial', tema: 'Salud', estado: 'Presentado',
+    titulo: 'Cobertura de bombas de insulina para chicos con diabetes',
+    destacado: true,
+    resumen: 'Cobertura integral de bombas de insulina, sensores de glucosa e insumos para chicos y chicas de hasta 18 años con diabetes.',
+    extracto: 'ESTABLÉCESE LA COBERTURA INTEGRAL DE INFUSORES SUBCUTÁNEOS CONTINUOS DE INSULINA Y DE SISTEMAS DE MONITOREO CONTINUO DE GLUCOSA EN SANGRE, NO INVASIVOS E INDOLOROS, Y DE LOS MEDICAMENTOS E INSUMOS DE ÚLTIMA TECNOLOGÍA PARA PACIENTES NIÑOS, NIÑAS Y ADOLESCENTES HASTA LOS DIECIOCHO (18) AÑOS DE EDAD INCLUSIVE CON PATOLOGÍA DIAGNOSTICADA DE DIABETES MELLITUS TIPO 1 (DM1) Y TIPO 2 (DM2).' },
+
+  { id: 9621, numero: 547, tipo: 'Ley Provincial', tema: 'Educación', estado: 'Presentado',
+    titulo: 'Títulos educativos verificables',
+    destacado: true,
+    resumen: 'Que cada título y certificado educativo de la provincia se pueda verificar y auditar, para cortar de raíz los títulos falsos.',
+    extracto: 'RÉGIMEN PROVINCIAL DE INTEGRIDAD, TRAZABILIDAD Y AUDITORÍA DE LA EMISIÓN DE TÍTULOS Y CERTIFICACIONES EDUCATIVAS.' },
+
+  { id: 9613, numero: 537, tipo: 'Ley Provincial', tema: 'Economía y trabajo', estado: 'Presentado',
+    titulo: 'Programa de alivio al sobreendeudamiento',
+    extracto: 'CRÉASE EL PROGRAMA PROVINCIAL DE ALIVIO AL SOBREENDEUDAMIENTO ("EL PROGRAMA"), DESTINADO A REFINANCIAR DEUDAS DE AGENTES PÚBLICOS PROVINCIALES Y MUNICIPALES, Y DE FAMILIAS CATAMARQUEÑAS EN SITUACIÓN DE SOBREENDEUDAMIENTO.' },
+  { id: 9612, numero: 536, tipo: 'Ley Provincial', tema: 'Ambiente y energía', estado: 'Presentado',
+    titulo: 'Energía de emergencia en localidades con parques solares',
+    extracto: 'GARANTIZAR EL SUMINISTRO ELÉCTRICO DE EMERGENCIA A LAS LOCALIDADES DE LA PROVINCIA EN CUYO ÁMBITO SE EMPLACEN PARQUES DE GENERACIÓN DE ENERGÍA SOLAR FOTOVOLTAICA.' },
+  { id: 9589, numero: 513, tipo: 'Ley Provincial', tema: 'Educación', estado: 'Presentado',
+    titulo: 'Bachiller en Minería y Recursos Naturales',
+    extracto: 'CREASE EN EL CICLO ORIENTADO DEL NIVEL DE EDUCACIÓN SECUNDARIA DE LA PROVINCIA DE CATAMARCA, LA ORIENTACIÓN EN MINERÍA Y RECURSOS NATURALES.' },
+  { id: 9530, numero: 454, tipo: 'Ley Provincial', tema: 'Tránsito y tecnología', estado: 'Presentado',
+    titulo: 'Régimen provincial de vehículos autónomos',
+    extracto: 'ESTABLÉCESE EL RÉGIMEN PROVINCIAL COMPLEMENTARIO PARA EL REGISTRO, HABILITACIÓN, PRUEBA Y CIRCULACIÓN DENTRO DEL TERRITORIO PROVINCIAL DE VEHÍCULOS AUTÓNOMOS.' },
+  { id: 9462, numero: 386, tipo: 'Ley Provincial', tema: 'Educación', estado: 'Presentado',
+    titulo: 'Modificación de la ley de símbolos patrios',
+    extracto: 'MODIFICACIÓN DE LA LEY N° 5.356 – NORMAS DE USO Y TRATAMIENTO DE LOS SÍMBOLOS PATRIOS.' },
+  { id: 9461, numero: 385, tipo: 'Ley Provincial', tema: 'Educación', estado: 'Presentado',
+    titulo: 'Formación docente en educación inclusiva',
+    extracto: 'CRÉASE EL PROGRAMA PROVINCIAL DE FORMACIÓN DOCENTE EN EDUCACIÓN INCLUSIVA Y ATENCIÓN A LA DIVERSIDAD.' },
+  { id: 9460, numero: 384, tipo: 'Ley Provincial', tema: 'Seguridad', estado: 'Presentado',
+    titulo: 'Cumbre Segura Catamarca',
+    extracto: 'CRÉASE EL SISTEMA PROVINCIAL DE REGISTRO DIGITAL PARA LA SEGURIDAD EN SENDERISMO, TREKKING Y MONTAÑISMO, DENOMINADO "CUMBRE SEGURA CATAMARCA".' },
+  { id: 9459, numero: 383, tipo: 'Declaración', tema: 'Cultura y comunidad', estado: 'Presentado',
+    titulo: 'Estudio Superior de Danzas Españolas',
+    extracto: 'DECLÁRASE DE INTERÉS PARLAMENTARIO, CULTURAL Y ARTÍSTICO LA TRAYECTORIA DEL ESTUDIO SUPERIOR DE DANZAS ESPAÑOLAS DE LA CIUDAD CAPITAL DE LA PROVINCIA DE CATAMARCA.' },
+  { id: 9457, numero: 381, tipo: 'Ley Provincial', tema: 'Educación', estado: 'Presentado',
+    titulo: 'Continuidad pedagógica en jornadas de frío extremo',
+    extracto: 'CRÉASE EL PROTOCOLO PROVINCIAL DE CONTINUIDAD PEDAGÓGICA ANTE JORNADAS DE FRÍO EXTREMO.' },
+  { id: 9417, numero: 343, tipo: 'Declaración', tema: 'Cultura y comunidad', estado: 'Presentado',
+    titulo: '"Carrozas de la Independencia"',
+    extracto: 'DECLÁRASE DE INTERÉS PARLAMENTARIO LA REALIZACIÓN DEL EVENTO "CARROZAS DE LA INDEPENDENCIA", ORGANIZADO POR DOCENTES DEL NIVEL PRIMARIO DEL COLEGIO PRIVADO PADRE RAMÓN DE LA QUINTANA.' },
+  { id: 9310, numero: 236, tipo: 'Declaración', tema: 'Cultura y comunidad', estado: 'Presentado',
+    titulo: 'Buscapinas F.C., fútbol femenino',
+    extracto: 'DECLÁRASE DE INTERÉS LEGISLATIVO LA ACTUACIÓN DEL EQUIPO DE FÚTBOL FEMENINO BUSCAPINAS F.C., DEL COLEGIO DE ABOGADOS Y ABOGADAS DE LA PROVINCIA DE CATAMARCA.' },
+  { id: 9263, numero: 189, tipo: 'Declaración', tema: 'Cultura y comunidad', estado: 'Presentado',
+    titulo: '5ª edición de Cultura Cooperativa 2026',
+    extracto: 'DECLÁRASE DE INTERÉS PARLAMENTARIO, LA REALIZACIÓN DEL "5° EDICIÓN DE CULTURA COOPERATIVA 2026".' },
+  { id: 9262, numero: 188, tipo: 'Declaración', tema: 'Cultura y comunidad', estado: 'Presentado',
+    titulo: 'Centro Vecinal "Pte. Ramón S. Castillo"',
+    extracto: 'DECLÁRASE DE INTERÉS LEGISLATIVO, POR LA TRAYECTORIA INSTITUCIONAL DEL CENTRO VECINAL "PTE. RAMÓN S. CASTILLO" DEL BARRIO PILOTO DE LA CIUDAD CAPITAL.' },
+  { id: 9255, numero: 181, tipo: 'Declaración', tema: 'Cultura y comunidad', estado: 'Presentado',
+    titulo: 'Banda "Los Hijos de Harri"',
+    extracto: 'DECLÁRASE DE INTERÉS PARLAMENTARIO LA TRAYECTORIA Y EL RECIENTE LOGRO INTERNACIONAL DE LA BANDA CATAMARQUEÑA "LOS HIJOS DE HARRI".' },
+  { id: 9240, numero: 166, tipo: 'Ley Provincial', tema: 'Seguridad', estado: 'Presentado',
+    titulo: 'Escuelas Seguras: protocolo ante armas y amenazas',
+    extracto: 'CRÉASE EL PROCEDIMIENTO PROVINCIAL DE ACTUACIÓN ANTE LA SOSPECHA FUNDADA O DETECCIÓN DE ARMAS, EXPLOSIVOS, ARTEFACTOS SIMULADOS U OBJETOS POTENCIALMENTE PELIGROSOS EN EL ÁMBITO EDUCATIVO.' },
+  { id: 9236, numero: 163, tipo: 'Ley Provincial', tema: 'Educación', estado: 'Presentado',
+    titulo: 'Registro de Apoyo Escolar y Tutorías (REPAT)',
+    extracto: 'CRÉASE EL REGISTRO PROVINCIAL DE APOYO ESCOLAR Y TUTORÍAS (REPAT), EN EL ÁMBITO DEL MINISTERIO DE EDUCACIÓN DE LA PROVINCIA DE CATAMARCA, COMO SISTEMA PÚBLICO DE VALIDACIÓN, ORGANIZACIÓN Y VINCULACIÓN DE SERVICIOS EDUCATIVOS COMPLEMENTARIOS.' },
+  { id: 9216, numero: 142, tipo: 'Declaración', tema: 'Cultura y comunidad', estado: 'Presentado',
+    titulo: 'Proyecto "Fortaleza hecha falda"',
+    extracto: 'DECLÁRASE DE INTERÉS PARLAMENTARIO AL PROYECTO "FORTALEZA HECHA FALDA", INICIATIVA FORMATIVA, CREADA Y COORDINADA POR LA PROFESORA ROMINA SALVATIERRA.' },
+  { id: 9214, numero: 140, tipo: 'Ley Provincial', tema: 'Tránsito y tecnología', estado: 'Presentado',
+    titulo: 'Distintivo voluntario para conductores mayores de 70',
+    extracto: 'CREASE UN DISTINTIVO VEHICULAR DE USO VOLUNTARIO PARA CONDUCTORES DE SETENTA AÑOS O MÁS.' },
+  { id: 9213, numero: 139, tipo: 'Declaración', tema: 'Cultura y comunidad', estado: 'Presentado',
+    titulo: 'Compañía de Danzas Femenina "Eulalias"',
+    extracto: 'DECLÁRASE DE INTERÉS PARLAMENTARIO A LA "COMPAÑÍA DE DANZAS FEMENINA EULALIAS", INICIATIVA ARTÍSTICA Y CULTURAL CREADA Y COORDINADA POR LAS PROFESORAS VERÓNICA ANAHÍ CATIVA Y ANDREA MELINA CORBALÁN.' }
+];
+
+// ---------------------------------------------------------------
+// 3) COMISIONES (fuente: CEDOP / diputadoscatamarca.gob.ar)
 // ---------------------------------------------------------------
 const COMISIONES = [
   { nombre: 'Legislación General', rol: 'Presidente' },
@@ -56,33 +140,148 @@ const COMISIONES = [
 ];
 
 // ---------------------------------------------------------------
-// Agenda — reemplazá estos placeholders por fechas y lugares reales.
+// 4) RECORRIDAS
+//    Cada recorrida nueva: copiá un bloque { ... } y completalo.
+//    El campo "departamento" tiene que estar escrito igual que en la
+//    lista DEPARTAMENTOS de abajo: así se pinta solo en el mapa y
+//    suma en "departamentos recorridos".
+//    foto: opcional, nombre del archivo subido al repo (ej: 'fotos/belen.jpg').
 // ---------------------------------------------------------------
-const AGENDA = [
-  { fecha: '[FECHA]', lugar: '[LOCALIDAD / BARRIO]', detalle: '[Detalle: recorrida, audiencia pública o reunión vecinal]' },
-  { fecha: '[FECHA]', lugar: '[LOCALIDAD / BARRIO]', detalle: '[Detalle de la actividad]' },
-  { fecha: '[FECHA]', lugar: '[LOCALIDAD / BARRIO]', detalle: '[Detalle de la actividad]' }
+const RECORRIDAS = [
+  {
+    fecha: '2026',
+    departamento: 'Antofagasta de la Sierra',
+    lugares: 'Antofalla · Vega Las Cuevas',
+    detalle: 'Recorrida por la Puna catamarqueña: visita a Antofalla y a familias de la Vega Las Cuevas, junto al Salar de Antofalla.',
+    foto: '',
+    enlace: 'https://www.instagram.com/exequiel.moreno/'
+  }
 ];
 
-const CATEGORIAS = ['Todos', 'Ley Provincial', 'Declaración'];
+const DEPARTAMENTOS = [
+  'Ambato', 'Ancasti', 'Andalgalá', 'Antofagasta de la Sierra',
+  'Belén', 'Capayán', 'Capital', 'El Alto',
+  'Fray Mamerto Esquiú', 'La Paz', 'Paclín', 'Pomán',
+  'Santa María', 'Santa Rosa', 'Tinogasta', 'Valle Viejo'
+];
+
+// ===============================================================
+//  A PARTIR DE ACÁ ES EL FUNCIONAMIENTO — no hace falta tocarlo.
+// ===============================================================
+
+const TEMA_COLORS = {
+  'Educación': 'var(--cat-educacion)',
+  'Economía y trabajo': 'var(--cat-produccion)',
+  'Seguridad': 'var(--cat-seguridad)',
+  'Salud': 'var(--cat-salud)',
+  'Ambiente y energía': 'var(--cat-ambiente)',
+  'Tránsito y tecnología': 'var(--cat-animal)',
+  'Cultura y comunidad': '#9A5B3C'
+};
+
+const TEMAS = ['Todos', ...Array.from(new Set(PROYECTOS.map((p) => p.tema)))];
 
 let filtroActivo = 'Todos';
 let textoBusqueda = '';
 
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+function departamentosVisitados() {
+  return new Set(RECORRIDAS.map((r) => r.departamento).filter((d) => DEPARTAMENTOS.includes(d)));
+}
+
+function valorDato(v) {
+  if (v === 'auto-leyes') return PROYECTOS.filter((p) => p.tipo === 'Ley Provincial').length;
+  if (v === 'auto-declaraciones') return PROYECTOS.filter((p) => p.tipo === 'Declaración').length;
+  if (v === 'auto-departamentos') return departamentosVisitados().size;
+  return v;
+}
+
 function renderStats() {
-  document.getElementById('statProyectos').textContent = PROYECTOS.length;
+  const wrap = document.getElementById('statsStrip');
+  wrap.innerHTML = '';
+  DATOS_IMPACTO.forEach((d) => {
+    const valor = valorDato(d.valor);
+    if (valor === null || valor === undefined || valor === '') return;
+    const el = document.createElement('div');
+    el.className = 'stat';
+    el.innerHTML = `
+      <span class="stat-num" data-target="${typeof valor === 'number' ? valor : ''}">${typeof valor === 'number' ? 0 : escapeHtml(valor)}</span>
+      <span class="stat-label">${escapeHtml(d.etiqueta)}</span>`;
+    wrap.appendChild(el);
+  });
+  animarNumeros();
+}
+
+function animarNumeros() {
+  const nums = document.querySelectorAll('.stat-num[data-target]:not([data-target=""])');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = Number(el.dataset.target);
+      const inicio = performance.now();
+      const dur = 900;
+      const paso = (t) => {
+        const k = Math.min(1, (t - inicio) / dur);
+        el.textContent = Math.round(target * (1 - Math.pow(1 - k, 3)));
+        if (k < 1) requestAnimationFrame(paso);
+      };
+      requestAnimationFrame(paso);
+      obs.unobserve(el);
+    });
+  }, { threshold: 0.4 });
+  nums.forEach((n) => obs.observe(n));
+}
+
+function renderAboutChips() {
+  const wrap = document.getElementById('aboutChips');
+  if (!wrap) return;
+  wrap.innerHTML = TEMAS.filter((t) => t !== 'Todos')
+    .map((t) => `<span class="chip">${escapeHtml(t)}</span>`).join('');
+}
+
+function stepperHtml(estado) {
+  const idx = Math.max(0, ETAPAS.indexOf(estado));
+  return `
+    <ol class="stepper" aria-label="Etapa del trámite: ${escapeHtml(estado)}">
+      ${ETAPAS.map((e, i) => `
+        <li class="${i < idx ? 'done' : ''} ${i === idx ? 'current' : ''}">
+          <span class="step-dot"></span><span class="step-label">${e}</span>
+        </li>`).join('')}
+    </ol>`;
+}
+
+function renderFeatured() {
+  const grid = document.getElementById('featuredGrid');
+  grid.innerHTML = '';
+  PROYECTOS.filter((p) => p.destacado).forEach((p) => {
+    const color = TEMA_COLORS[p.tema] || 'var(--accent)';
+    const card = document.createElement('article');
+    card.className = 'featured-card reveal';
+    card.innerHTML = `
+      <span class="project-cat" style="color:${color}">${escapeHtml(p.tema)}</span>
+      <h3>${escapeHtml(p.titulo)}</h3>
+      <p>${escapeHtml(p.resumen || '')}</p>
+      ${stepperHtml(p.estado)}
+      <a href="https://cedop.gob.ar/buscar/Proyecto/${p.id}" target="_blank" rel="noopener" class="project-cedop-link">Expte. N° ${p.numero} en CEDOP ↗</a>`;
+    grid.appendChild(card);
+  });
 }
 
 function renderChips() {
   const wrap = document.getElementById('filterChips');
   wrap.innerHTML = '';
-  CATEGORIAS.forEach((cat) => {
+  TEMAS.forEach((tema) => {
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.className = 'filter-chip' + (cat === filtroActivo ? ' active' : '');
-    btn.textContent = cat;
+    btn.className = 'filter-chip' + (tema === filtroActivo ? ' active' : '');
+    btn.textContent = tema;
+    btn.setAttribute('aria-pressed', tema === filtroActivo);
     btn.addEventListener('click', () => {
-      filtroActivo = cat;
+      filtroActivo = tema;
       renderChips();
       renderProjects();
     });
@@ -93,34 +292,39 @@ function renderChips() {
 function renderProjects() {
   const grid = document.getElementById('projectsGrid');
 
-  let filtrados = filtroActivo === 'Todos'
-    ? PROYECTOS
-    : PROYECTOS.filter((p) => p.tipo === filtroActivo);
+  let filtrados = filtroActivo === 'Todos' ? PROYECTOS : PROYECTOS.filter((p) => p.tema === filtroActivo);
 
   if (textoBusqueda.trim()) {
     const q = textoBusqueda.trim().toLowerCase();
     filtrados = filtrados.filter((p) =>
-      p.extracto.toLowerCase().includes(q) || String(p.numero).includes(q)
+      (p.titulo + ' ' + p.extracto + ' ' + (p.resumen || '')).toLowerCase().includes(q) ||
+      String(p.numero).includes(q)
     );
   }
 
   document.getElementById('filterCount').textContent =
-    `Mostrando ${filtrados.length} de ${PROYECTOS.length} expedientes — ${filtroActivo === 'Todos' ? 'todos los tipos' : filtroActivo}`;
+    `Mostrando ${filtrados.length} de ${PROYECTOS.length} expedientes`;
 
   grid.innerHTML = '';
+  if (!filtrados.length) {
+    grid.innerHTML = '<p class="empty-state">No encontramos proyectos con esa búsqueda.</p>';
+    return;
+  }
   filtrados.forEach((p) => {
-    const color = CATEGORY_COLORS[p.tipo] || 'var(--accent)';
-    const card = document.createElement('div');
+    const color = TEMA_COLORS[p.tema] || 'var(--accent)';
+    const card = document.createElement('article');
     card.className = 'project-card reveal';
     card.innerHTML = `
-      <span class="project-cat" style="color:${color}">${p.tipo} · N° ${p.numero}</span>
-      <p class="project-extracto">${p.extracto}</p>
-      <a href="https://cedop.gob.ar/buscar/Proyecto/${p.id}" target="_blank" rel="noopener" class="project-cedop-link">Ver expediente en CEDOP ↗</a>
+      <span class="project-cat" style="color:${color}">${escapeHtml(p.tema)} · ${escapeHtml(p.tipo)}</span>
+      <h3>${escapeHtml(p.titulo)}</h3>
+      <details class="extracto">
+        <summary>Ver extracto oficial</summary>
+        <p>${escapeHtml(p.extracto)}</p>
+      </details>
       <div class="project-status">
-        <span class="dot" style="background:${color}"></span>
-        <span>${p.gde}</span>
-      </div>
-    `;
+        <span class="status-badge status-${ETAPAS.indexOf(p.estado)}">${escapeHtml(p.estado)}</span>
+        <a href="https://cedop.gob.ar/buscar/Proyecto/${p.id}" target="_blank" rel="noopener" class="project-cedop-link">N° ${p.numero} ↗</a>
+      </div>`;
     grid.appendChild(card);
   });
   observeReveal();
@@ -143,19 +347,46 @@ function renderComisiones() {
     const item = document.createElement('div');
     item.className = 'comision-card reveal';
     item.innerHTML = `
-      <span class="comision-nombre">${c.nombre}</span>
-      ${c.rol ? `<span class="comision-rol">${c.rol}</span>` : ''}
-    `;
+      <span class="comision-nombre">${escapeHtml(c.nombre)}</span>
+      ${c.rol ? `<span class="comision-rol">${escapeHtml(c.rol)}</span>` : ''}`;
     wrap.appendChild(item);
   });
   observeReveal();
 }
 
-// ---------------------------------------------------------------
-// Animación de aparición al hacer scroll (más interactiva).
-// ---------------------------------------------------------------
+function renderRecorridas() {
+  const visitados = departamentosVisitados();
+  document.getElementById('deptosCount').textContent = visitados.size;
+
+  const deptos = document.getElementById('deptosGrid');
+  deptos.innerHTML = DEPARTAMENTOS.map((d) =>
+    `<span class="depto ${visitados.has(d) ? 'visited' : ''}">${escapeHtml(d)}</span>`).join('');
+
+  const grid = document.getElementById('recorridasGrid');
+  grid.innerHTML = '';
+  RECORRIDAS.forEach((r) => {
+    const card = document.createElement('article');
+    card.className = 'recorrida-card reveal';
+    card.innerHTML = `
+      ${r.foto ? `<img src="${escapeHtml(r.foto)}" alt="Recorrida por ${escapeHtml(r.departamento)}" class="recorrida-foto">` : `<div class="recorrida-foto recorrida-foto-vacia"><span>${escapeHtml(r.departamento)}</span></div>`}
+      <div class="recorrida-body">
+        <span class="recorrida-fecha">${escapeHtml(r.fecha)} · ${escapeHtml(r.departamento)}</span>
+        <h3>${escapeHtml(r.lugares)}</h3>
+        <p>${escapeHtml(r.detalle)}</p>
+        ${r.enlace ? `<a href="${escapeHtml(r.enlace)}" target="_blank" rel="noopener" class="project-cedop-link">Ver fotos y videos ↗</a>` : ''}
+      </div>`;
+    grid.appendChild(card);
+  });
+  observeReveal();
+}
+
+// Animación de aparición al hacer scroll
 let revealObserver = null;
 function observeReveal() {
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('is-visible'));
+    return;
+  }
   if (!revealObserver) {
     revealObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -169,31 +400,7 @@ function observeReveal() {
   document.querySelectorAll('.reveal:not(.is-visible)').forEach((el) => revealObserver.observe(el));
 }
 
-function renderAgenda() {
-  const list = document.getElementById('agendaList');
-  list.innerHTML = '';
-  AGENDA.forEach((a) => {
-    const item = document.createElement('div');
-    item.className = 'agenda-item reveal';
-    item.innerHTML = `
-      <div class="agenda-date">${a.fecha}</div>
-      <div class="agenda-place">
-        <strong>${a.lugar}</strong>
-        <span>${a.detalle}</span>
-      </div>
-    `;
-    list.appendChild(item);
-  });
-  observeReveal();
-}
-
-// ---------------------------------------------------------------
-// Formulario de contacto.
-// Se envía de verdad (POST) al Google Form configurado en index.html.
-// El iframe oculto evita que el envío navegue fuera del sitio;
-// cuando el iframe termina de cargar la respuesta, mostramos el
-// mensaje de éxito.
-// ---------------------------------------------------------------
+// Formulario de contacto: se envía al Google Form configurado en index.html.
 function initContactForm() {
   const form = document.getElementById('contactForm');
   const iframe = document.getElementById('hidden_iframe');
@@ -201,12 +408,10 @@ function initContactForm() {
   const resetBtn = document.getElementById('resetForm');
   let submitted = false;
 
-  form.addEventListener('submit', () => {
-    submitted = true;
-  });
+  form.addEventListener('submit', () => { submitted = true; });
 
   iframe.addEventListener('load', () => {
-    if (!submitted) return; // ignora la primera carga (iframe vacío)
+    if (!submitted) return;
     form.hidden = true;
     successMessage.hidden = false;
   });
@@ -221,10 +426,12 @@ function initContactForm() {
 
 document.addEventListener('DOMContentLoaded', () => {
   renderStats();
+  renderAboutChips();
+  renderFeatured();
   renderChips();
   renderProjects();
   initProjectSearch();
   renderComisiones();
-  renderAgenda();
+  renderRecorridas();
   initContactForm();
 });

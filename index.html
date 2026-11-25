@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Exequiel Moreno — Diputado Provincial de Catamarca</title>
-  <meta name="description" content="Sitio institucional del diputado provincial Exequiel Moreno. Conocé sus proyectos legislativos, su agenda territorial y dejá tu consulta.">
+  <meta name="description" content="Sitio institucional del diputado provincial Exequiel Moreno. Conocé sus proyectos legislativos, sus recorridas por los departamentos de Catamarca y dejá tu consulta.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="style.css">
@@ -14,12 +14,12 @@
   <!-- NAV -->
   <header class="site-header">
     <a href="#inicio" class="logo">
-      <img src="images/logo.png" alt="Exequiel Moreno, Diputado Provincial" class="logo-img">
+      <img src="logo.png" alt="Exequiel Moreno, Diputado Provincial" class="logo-img">
     </a>
     <nav class="main-nav">
       <a href="#sobre-mi">Sobre mí</a>
       <a href="#proyectos">Proyectos</a>
-      <a href="#agenda">Agenda</a>
+      <a href="#recorridas">Recorridas</a>
       <a href="#contacto" class="btn btn-accent">Contactar</a>
     </nav>
   </header>
@@ -27,38 +27,26 @@
   <!-- HERO -->
   <section id="inicio" class="hero">
     <div class="hero-text">
-      <span class="eyebrow eyebrow-light">Honorable Cámara de Diputados de Catamarca</span>
+      <span class="eyebrow eyebrow-light">Diputado provincial · Catamarca</span>
+      <p class="hero-name">Exequiel Moreno</p>
       <h1>Trabajando por Catamarca, proyecto a proyecto.</h1>
-      <p>Legislación pensada desde las necesidades reales de nuestros barrios, escuelas y departamentos. Conocé el trabajo, las visitas y las iniciativas en curso.</p>
+      <p>Leyes pensadas desde lo que pasa en nuestros barrios, escuelas y departamentos. Acá podés ver qué proyectos presentó, en qué estado está cada uno y por dónde anduvo recorriendo la provincia.</p>
       <div class="hero-actions">
-        <a href="#proyectos" class="btn btn-accent">Ver proyectos</a>
-        <a href="#contacto" class="btn btn-outline">Dejar una consulta</a>
+        <a href="#proyectos" class="btn btn-accent">Conocé sus proyectos</a>
+        <a href="#contacto" class="btn btn-outline">Escribile</a>
       </div>
+      <ul class="hero-facts">
+        <li>Presidente de la Comisión de Legislación General</li>
+        <li>Honorable Cámara de Diputados de Catamarca</li>
+      </ul>
     </div>
     <div class="hero-photo">
       <img src="moreno-hero.jpg" alt="Exequiel Moreno, Diputado Provincial de Catamarca">
     </div>
   </section>
 
-  <!-- STATS -->
-  <section class="stats-strip">
-    <div class="stat">
-      <span class="stat-num" id="statProyectos">0</span>
-      <span class="stat-label">proyectos legislativos elaborados</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">6</span>
-      <span class="stat-label">áreas de política pública</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">1</span>
-      <span class="stat-label">banca, muchas causas</span>
-    </div>
-    <div class="stat">
-      <span class="stat-num">[N]</span>
-      <span class="stat-label">departamentos visitados</span>
-    </div>
-  </section>
+  <!-- DATOS DE IMPACTO (se completan desde script.js) -->
+  <section class="stats-strip" id="statsStrip" aria-label="Datos de la gestión"></section>
 
   <!-- SOBRE MI -->
   <section id="sobre-mi" class="about">
@@ -68,13 +56,7 @@
     </div>
     <div class="about-body">
       <p>[BIOGRAFÍA BREVE: trayectoria, departamento de origen, motivación para la función pública y principales logros legislativos hasta el momento.]</p>
-      <div class="chips">
-        <span class="chip">Educación</span>
-        <span class="chip">Salud y familias</span>
-        <span class="chip">Seguridad</span>
-        <span class="chip">Ambiente y tecnología</span>
-        <span class="chip">Producción</span>
-      </div>
+      <div class="chips" id="aboutChips"></div>
     </div>
   </section>
 
@@ -82,18 +64,28 @@
   <section id="proyectos" class="projects">
     <div class="section-intro">
       <span class="eyebrow">Proyectos</span>
-      <h2>Iniciativas legislativas</h2>
-      <p>Filtrá por tipo para ver el trabajo presentado. Para consultar el estado y el texto completo de cada expediente, la fuente oficial es CEDOP.</p>
-      <a href="https://cedop.gob.ar/buscar/Diputado/209" target="_blank" rel="noopener" class="btn btn-outline-dark cedop-link">Ver la nómina completa en CEDOP ↗</a>
+      <h2>Lo que está en marcha</h2>
+      <p>Los proyectos más importantes, explicados en pocas palabras, y en qué etapa del trámite está cada uno.</p>
+    </div>
+
+    <div class="featured-grid" id="featuredGrid"></div>
+
+    <div class="section-intro section-intro-sub">
+      <h3 class="sub-title">Todos los proyectos presentados</h3>
+      <p>Filtrá por tema o buscá por palabra. El texto completo de cada expediente está en CEDOP, la fuente oficial de la Cámara.</p>
     </div>
 
     <div class="filter-chips" id="filterChips"></div>
     <div class="search-wrap">
-      <input type="search" id="projectSearch" class="search-input" placeholder="Buscar por palabra clave (ej: docente, ambiente, vehículos)...">
+      <input type="search" id="projectSearch" class="search-input" placeholder="Buscar por palabra clave (ej: docente, cooperativas, insulina)..." aria-label="Buscar proyectos">
     </div>
     <p class="filter-count" id="filterCount"></p>
 
     <div class="projects-grid" id="projectsGrid"></div>
+
+    <div class="cedop-cta">
+      <a href="https://cedop.gob.ar/buscar/Diputado/209" target="_blank" rel="noopener" class="btn btn-outline-dark">Ver la nómina completa en CEDOP ↗</a>
+    </div>
   </section>
 
   <!-- COMISIONES -->
@@ -106,14 +98,29 @@
     <div class="comisiones-grid" id="comisionesList"></div>
   </section>
 
-  <!-- AGENDA -->
-  <section id="agenda" class="agenda">
-    <div class="agenda-heading">
-      <span class="eyebrow">Agenda</span>
-      <h2>Recorridas y actividad territorial</h2>
-      <p>Visitas a departamentos, audiencias públicas y reuniones vecinales.</p>
+  <!-- RECORRIDAS -->
+  <section id="recorridas" class="recorridas">
+    <div class="section-intro">
+      <span class="eyebrow">Recorridas</span>
+      <h2>Estar cerca también es escuchar</h2>
+      <p>Visitas a los departamentos de la provincia para conocer de primera mano lo que necesita cada comunidad.</p>
     </div>
-    <div class="agenda-list" id="agendaList"></div>
+
+    <div class="deptos-wrap">
+      <p class="deptos-title"><span id="deptosCount">0</span> de 16 departamentos recorridos</p>
+      <div class="deptos-grid" id="deptosGrid"></div>
+      <div class="deptos-legend">
+        <span><i class="legend-dot visited"></i> Recorrido</span>
+        <span><i class="legend-dot"></i> Próximamente</span>
+      </div>
+    </div>
+
+    <div class="recorridas-grid" id="recorridasGrid"></div>
+
+    <div class="recorridas-cta">
+      <p>¿Querés que visite tu localidad o tu institución?</p>
+      <a href="#contacto" class="btn btn-accent">Invitalo</a>
+    </div>
   </section>
 
   <!-- CONTACTO -->
@@ -123,11 +130,17 @@
       <h2>¿Tenés una consulta o una propuesta?</h2>
       <p>Escribinos y el equipo te va a responder a la brevedad.</p>
       <ul class="contact-details">
-        <li>Oficina: [DIRECCIÓN — HONORABLE CÁMARA DE DIPUTADOS, CATAMARCA]</li>
-        <li>Teléfono: [A COMPLETAR]</li>
-        <li>Email: [A COMPLETAR]</li>
-        <li>Redes: [INSTAGRAM] · [FACEBOOK] · [X]</li>
+        <li><strong>Oficina:</strong> Cámara de Diputados, República y Ayacucho, 3° piso, oficina 305 — San Fernando del Valle de Catamarca</li>
+        <li><strong>Horario:</strong> lunes a viernes, de 7 a 13 y de 15 a 21 hs</li>
+        <li><strong>Email:</strong> <a href="mailto:contacto@exequielmoreno.com.ar">contacto@exequielmoreno.com.ar</a></li>
+        <li><strong>Prensa:</strong> <a href="mailto:prensa@exequielmoreno.com.ar">prensa@exequielmoreno.com.ar</a></li>
       </ul>
+      <div class="social-links">
+        <a href="https://www.instagram.com/exequiel.moreno/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/profile.php?id=61579385498083" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://x.com/moreno_exe" target="_blank" rel="noopener">X</a>
+        <a href="https://www.tiktok.com/@exequiel.moreno" target="_blank" rel="noopener">TikTok</a>
+      </div>
     </div>
 
     <div class="contact-form-card">
@@ -159,20 +172,20 @@
       </div>
 
       <!-- iframe oculto: evita que el envío del form navegue a Google -->
-      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+      <iframe name="hidden_iframe" id="hidden_iframe" title="Envío del formulario" style="display:none;"></iframe>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-brand">
-      <img src="images/logo.png" alt="Exequiel Moreno, Diputado Provincial" class="footer-logo">
+      <img src="logo.png" alt="Exequiel Moreno, Diputado Provincial" class="footer-logo">
       <span class="footer-tag">Honorable Cámara de Diputados de la Provincia de Catamarca</span>
     </div>
     <nav class="footer-nav">
       <a href="#sobre-mi">Sobre mí</a>
       <a href="#proyectos">Proyectos</a>
-      <a href="#agenda">Agenda</a>
+      <a href="#recorridas">Recorridas</a>
       <a href="#contacto">Contacto</a>
     </nav>
   </footer>
